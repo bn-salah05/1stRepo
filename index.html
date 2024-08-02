@@ -3,88 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TypeVerse - Enter the Future of Typing</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <title>color palette generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="stars"></div>
-    <div class="twinkling"></div>
-    <header>
-        <nav>
-            <div class="logo">Type<span>Verse</span></div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="title_container">
+        <h1 id="title">Random Color Palette Generator</h1>
+    </div>
+    <div id="palette_container">
+        <div class="color" id="grad1"></div>
+        <div class="color" id="grad2"></div>
+        <div class="color" id="grad3"></div>
+        <div class="color" id="grad4"></div>
+        <div class="color" id="grad5"></div>
+        <div class="color" id="grad6"></div>
+        <div class="color" id="grad7"></div>
+        <div class="color" id="grad8"></div>
+        <div class="color" id="grad9"></div>
+        <div class="color" id="grad10"></div>
+    </div>
+    <div id="button_container">
+        <button id="generate" onclick="colorGenerator()">Generate Palette</button>
+    </div>
 
-    <main>
-        <section id="home">
-            <div class="hero">
-                <h1>Enter the <span class="highlight">TypeVerse</span></h1>
-                <p>Where fingers dance and words take flight</p>
-                <a href="practice.html" class="cta-button">
-                    <span>Begin Your Journey</span>
-                    <div class="liquid"></div>
-                </a>
-            </div>
-            <div class="floating-keyboards">
-                <div class="keyboard"></div>
-                <div class="keyboard"></div>
-                <div class="keyboard"></div>
-            </div>
-        </section>
+    <script>
+        let generate_button = document.getElementById("generate")
+        let color_divs = document.querySelectorAll(".color");
+        let div1 = document.getElementById("grad1")
 
-        <section id="features">
-            <h2>Unlock Your Potential</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-database"></i></div>
-                    <h3>Multi-Source Texts</h3>
-                    <p>JSON, Wikipedia, Gemini API, DOC, PDF - your choice</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Adaptive Difficulty</h3>
-                    <p>Challenge yourself at every level</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                    <h3>Real-time Analysis</h3>
-                    <p>Instant feedback on every keystroke</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
-                    <h3>Topic Customization</h3>
-                    <p>Type what interests you most</p>
-                </div>
-            </div>
-        </section>
+        function colorGenerator() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            div1.style.backgroundColor = color
+            let opacity = 1
+            color_divs.forEach(div => {
+                div.style.background = color
+                div.style.opacity = opacity
+                opacity = opacity - 0.08
+            })
+            
+        }
+        
 
-        <section id="about">
-            <h2>About TypeVerse</h2>
-            <p>TypeVerse is not just a typing app - it's a gateway to digital mastery. Our cutting-edge technology adapts to your skill level, providing a challenging and engaging experience that evolves as you do. Whether you're a beginner or a typing virtuoso, TypeVerse is your companion in the quest for typing perfection.</p>
-        </section>
+    </script>
 
-        <section id="contact">
-            <h2>Join the TypeVerse</h2>
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" required></textarea>
-                <button type="submit">Send Transmission</button>
-            </form>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2024 TypeVerse. All rights reserved. Venture into the future of typing.</p>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
